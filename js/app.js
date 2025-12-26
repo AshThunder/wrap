@@ -265,7 +265,7 @@ function setupEventListeners() {
     shareBtn.onclick = () => {
         const cfg = config[state.mode];
         const text = `My Airdrops 2025 Picks (${cfg.subtitle}):\n\n${cfg.emojis[0]} ${cfg.labels[0]}: ${state.slot1}\n${cfg.emojis[1]} ${cfg.labels[1]}: ${state.slot2}\n${cfg.emojis[2]} ${cfg.labels[2]}: ${state.slot3}\n\nGenerate yours here:`;
-        const url = window.location.origin + window.location.pathname; // Link to landing page
+        const url = window.location.origin; // Link to landing page (root)
         const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
         window.open(twitterUrl, '_blank');
     };
