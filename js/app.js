@@ -127,7 +127,7 @@ function updateUI() {
         // Card labels (Preview)
         if (s.cardLabel) {
             s.cardLabel.textContent = cfg.labels[index];
-            s.cardLabel.className = `text-[14px] font-black tracking-[0.5em] uppercase mb-5 opacity-40 ${cfg.colors[index]}`;
+            s.cardLabel.className = `text-[18px] font-black tracking-[0.5em] uppercase mb-5 opacity-40 ${cfg.colors[index]}`;
         }
 
         // Card values (Preview)
@@ -138,7 +138,7 @@ function updateUI() {
         // Card subtitles (Preview)
         if (s.cardSub) {
             s.cardSub.textContent = cfg.subtitles[index];
-            s.cardSub.className = `mt-3 text-[10px] font-black uppercase tracking-[0.3em] opacity-30 ${cfg.colors[index]}`;
+            s.cardSub.className = `mt-3 text-[12px] font-black uppercase tracking-[0.3em] opacity-30 ${cfg.colors[index]}`;
         }
 
         // Card box borders (Preview)
@@ -149,14 +149,14 @@ function updateUI() {
         // CAP Zone Updates
         if (s.cap.label) {
             s.cap.label.textContent = cfg.labels[index];
-            s.cap.label.className = `text-[14px] font-black tracking-[0.5em] uppercase mb-5 opacity-40 ${cfg.colors[index]}`;
+            s.cap.label.className = `text-[18px] font-black tracking-[0.5em] uppercase mb-5 opacity-40 ${cfg.colors[index]}`;
         }
         if (s.cap.val) {
             s.cap.val.className = `text-4xl font-black font-heading uppercase tracking-tighter ${cfg.cardClasses[index]}`;
         }
         if (s.cap.sub) {
             s.cap.sub.textContent = cfg.subtitles[index];
-            s.cap.sub.className = `mt-3 text-[10px] font-black uppercase tracking-[0.3em] opacity-30 ${cfg.colors[index]}`;
+            s.cap.sub.className = `mt-3 text-[12px] font-black uppercase tracking-[0.3em] opacity-30 ${cfg.colors[index]}`;
         }
         if (s.cap.box) {
             s.cap.box.className = `w-full flex-grow flex flex-col items-center justify-center glass-premium rounded-[2rem] border ${cfg.borderClasses[index]}/10 relative overflow-hidden`;
