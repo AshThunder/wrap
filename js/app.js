@@ -16,20 +16,20 @@ const config = {
         subtitle: "The Good, The Bad & The Ugly",
         labels: ["The Good", "The Bad", "The Ugly"],
         subtitles: ["Bullish", "Mid", "Bearish"],
-        colors: ["text-green-500", "text-yellow-500", "text-red-500"],
+        colors: ["text-green-400", "text-yellow-400", "text-red-400"],
         cardClasses: ["category-good", "category-bad", "category-ugly"],
-        borderClasses: ["border-green-500", "border-yellow-500", "border-red-500"],
-        glows: ["bg-green-500/10", "bg-red-500/10"],
+        borderClasses: ["border-green-400", "border-yellow-400", "border-red-400"],
+        glows: ["bg-green-400/20", "bg-red-400/20"],
         emojis: ["🟢", "🟡", "🔴"]
     },
     gbb: {
         subtitle: "Good, Better, Best",
         labels: ["Good", "Better", "Best"],
         subtitles: ["Solid", "Upgrade", "Top Pick"],
-        colors: ["text-amber-500", "text-cyan-500", "text-green-500"],
+        colors: ["text-amber-400", "text-cyan-400", "text-green-400"],
         cardClasses: ["category-best", "category-better", "category-good"],
-        borderClasses: ["border-amber-500", "border-cyan-500", "border-green-500"],
-        glows: ["bg-amber-500/10", "bg-green-500/10"],
+        borderClasses: ["border-amber-400", "border-cyan-400", "border-green-400"],
+        glows: ["bg-amber-400/20", "bg-green-400/20"],
         emojis: ["🏆", "⭐", "✅"]
     }
 };
@@ -105,17 +105,6 @@ function updateUI() {
     // Update subtitle
     document.getElementById('app-subtitle').textContent = cfg.subtitle;
 
-    // Update background glows
-    const glow1 = document.getElementById('glow-1');
-    const glow2 = document.getElementById('glow-2');
-    const capGlow1 = document.getElementById('cap-glow-1');
-    const capGlow2 = document.getElementById('cap-glow-2');
-
-    if (glow1) glow1.className = `absolute -top-32 -left-32 w-80 h-80 rounded-full blur-[120px] ${cfg.glows[0]} animate-pulse-glow`;
-    if (glow2) glow2.className = `absolute -bottom-32 -right-32 w-80 h-80 rounded-full blur-[120px] ${cfg.glows[1]} animate-pulse-glow`;
-    if (capGlow1) capGlow1.className = `absolute -top-32 -left-32 w-80 h-80 rounded-full blur-[120px] ${cfg.glows[0]}`;
-    if (capGlow2) capGlow2.className = `absolute -bottom-32 -right-32 w-80 h-80 rounded-full blur-[120px] ${cfg.glows[1]}`;
-
     // Update slots
     ['slot1', 'slot2', 'slot3'].forEach((key, index) => {
         const s = selectors[key];
@@ -143,7 +132,7 @@ function updateUI() {
 
         // Card box borders (Preview)
         if (s.cardBox) {
-            s.cardBox.className = `w-full flex-grow flex flex-col items-center justify-center glass-premium rounded-[2rem] group-hover:bg-white/[0.02] transition-all ${cfg.borderClasses[index]}/10 group-hover:${cfg.borderClasses[index]}/30 relative overflow-hidden`;
+            s.cardBox.className = `w-full flex-grow flex flex-col items-center justify-center glass-premium rounded-[2rem] group-hover:bg-white/[0.02] transition-all ${cfg.borderClasses[index]}/20 group-hover:${cfg.borderClasses[index]}/40 relative overflow-hidden`;
         }
 
         // CAP Zone Updates
@@ -159,7 +148,7 @@ function updateUI() {
             s.cap.sub.className = `mt-3 text-[12px] font-black uppercase tracking-[0.3em] opacity-30 ${cfg.colors[index]}`;
         }
         if (s.cap.box) {
-            s.cap.box.className = `w-full flex-grow flex flex-col items-center justify-center glass-premium rounded-[2rem] border ${cfg.borderClasses[index]}/10 relative overflow-hidden`;
+            s.cap.box.className = `w-full flex-grow flex flex-col items-center justify-center glass-premium rounded-[2rem] border ${cfg.borderClasses[index]}/20 relative overflow-hidden`;
         }
 
         // Input hover border
