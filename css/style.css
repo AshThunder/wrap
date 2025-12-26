@@ -206,11 +206,10 @@ body {
 
 .offscreen-capture {
     position: fixed;
-    left: 0;
+    left: -3000px;
     top: 0;
     width: 1200px;
     height: 675px;
     z-index: -100;
-    visibility: hidden;
     pointer-events: none;
 }

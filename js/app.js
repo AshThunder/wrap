@@ -250,8 +250,12 @@ function setupEventListeners() {
             }
 
             // 3. Safari Warm-up: Call the library once to "wake up" the rendering engine
-            // This is a known fix for Safari missing images on the first render
-            await htmlToImage.toPng(card, { quality: 0.1, pixelRatio: 1 });
+            // Wrapped in try-catch so it doesn't block the main capture if it fails
+            try {
+                await htmlToImage.toPng(card, { quality: 0.1, pixelRatio: 1 });
+            } catch (e) {
+                console.warn('Warm-up failed, proceeding anyway:', e);
+            }
 
             // 4. Increased delay for complex rendering (glassmorphism/gradients)
             await new Promise(resolve => setTimeout(resolve, 500));
@@ -263,10 +267,7 @@ function setupEventListeners() {
                 pixelRatio: 2,
                 quality: 1,
                 backgroundColor: '#050505',
-                cacheBust: true,
-                style: {
-                    visibility: 'visible' // Ensure it's visible during capture
-                }
+                cacheBust: true
             });
 
             const link = document.createElement('a');
