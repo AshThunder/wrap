@@ -238,14 +238,25 @@ function setupEventListeners() {
             // 1. Ensure fonts are ready
             await document.fonts.ready;
 
-            // 2. Ensure PFP image is fully loaded
+            // 2. Ensure PFP image is fully loaded and decoded (Aggressive iOS Fix)
             const pfpImg = document.getElementById('cap-card-pfp');
             if (pfpImg && pfpImg.src && !pfpImg.src.startsWith('data:image/svg+xml')) {
-                if (!pfpImg.complete) {
+                // Wait for load if not complete
+                if (!pfpImg.complete || pfpImg.naturalWidth === 0) {
                     await new Promise((resolve) => {
                         pfpImg.onload = resolve;
                         pfpImg.onerror = resolve;
+                        // Timeout as fallback
+                        setTimeout(resolve, 2000);
                     });
+                }
+                // Force decoding (Safari specific fix)
+                try {
+                    if (pfpImg.decode) {
+                        await pfpImg.decode();
+                    }
+                } catch (e) {
+                    console.warn('Image decoding failed, proceeding anyway:', e);
                 }
             }
 
