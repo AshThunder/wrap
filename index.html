@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="min-h-screen flex flex-col items-center justify-center p-4">
+<body class="min-h-screen flex flex-col p-4">
 
-    <div class="w-full max-w-6xl animate-fade-in text-center">
+    <div
+        class="w-full max-w-6xl animate-fade-in text-center flex-grow flex flex-col justify-center items-center mx-auto">
         <h1
             class="text-6xl md:text-8xl font-extrabold font-heading tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-600">
             CHOOSE YOUR PATH
         </h1>
         <p class="text-gray-400 text-xl font-medium tracking-wide mb-16">Select a generator mode to begin</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
             <!-- Mode 1 Card -->
-            <a href="generator.html?mode=gbu" class="group relative block">
+            <a href="generator.html?mode=gbu" class="group relative block w-full">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-green-500/20 via-transparent to-red-500/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 </div>
@@ -41,7 +42,7 @@
             </a>
 
             <!-- Mode 2 Card -->
-            <a href="generator.html?mode=gbb" class="group relative block">
+            <a href="generator.html?mode=gbb" class="group relative block w-full">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-green-500/20 via-transparent to-amber-500/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 </div>
@@ -63,7 +64,7 @@
         </div>
     </div>
 
-    <footer class="absolute bottom-4 w-full text-center text-gray-600 text-xs font-bold uppercase tracking-widest">
+    <footer class="w-full text-center text-gray-600 text-xs font-bold uppercase tracking-widest mt-8">
         <a href="https://x.com/ChrisGold__" target="_blank" class="hover:text-white transition-colors">created by
             ChrisGold__</a>
     </footer>
