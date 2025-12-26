@@ -235,18 +235,38 @@ function setupEventListeners() {
         downloadBtn.textContent = "GENERATING...";
 
         try {
+            // 1. Ensure fonts are ready
             await document.fonts.ready;
 
-            // Small delay to ensure everything is rendered
-            await new Promise(resolve => setTimeout(resolve, 200));
+            // 2. Ensure PFP image is fully loaded
+            const pfpImg = document.getElementById('cap-card-pfp');
+            if (pfpImg && pfpImg.src && !pfpImg.src.startsWith('data:image/svg+xml')) {
+                if (!pfpImg.complete) {
+                    await new Promise((resolve) => {
+                        pfpImg.onload = resolve;
+                        pfpImg.onerror = resolve;
+                    });
+                }
+            }
 
+            // 3. Safari Warm-up: Call the library once to "wake up" the rendering engine
+            // This is a known fix for Safari missing images on the first render
+            await htmlToImage.toPng(card, { quality: 0.1, pixelRatio: 1 });
+
+            // 4. Increased delay for complex rendering (glassmorphism/gradients)
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            // 5. Actual high-quality capture
             const dataUrl = await htmlToImage.toPng(card, {
                 width: 1200,
                 height: 675,
-                pixelRatio: 2, // 2 is enough for 1200x675 to be sharp
+                pixelRatio: 2,
                 quality: 1,
                 backgroundColor: '#050505',
-                cacheBust: true
+                cacheBust: true,
+                style: {
+                    visibility: 'visible' // Ensure it's visible during capture
+                }
             });
 
             const link = document.createElement('a');
