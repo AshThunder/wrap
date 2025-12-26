@@ -78,9 +78,10 @@
             <!-- PFP Upload -->
             <div class="space-y-2">
                 <label class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Profile Picture</label>
-                <label
-                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-white/5 border-dashed rounded-2xl cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all group">
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <label id="pfpLabel"
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-white/5 border-dashed rounded-2xl cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all group relative overflow-hidden">
+                    <!-- Initial State -->
+                    <div id="pfpPrompt" class="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg class="w-8 h-8 mb-3 text-gray-600 group-hover:text-gray-400 transition-colors" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -90,6 +91,25 @@
                         <p
                             class="text-xs text-gray-500 group-hover:text-gray-400 transition-colors font-bold uppercase tracking-widest">
                             Upload PFP</p>
+                    </div>
+                    <!-- Success State -->
+                    <div id="pfpSuccess"
+                        class="absolute inset-0 flex items-center gap-4 px-6 bg-green-500/5 hidden opacity-0 transition-opacity duration-300">
+                        <div
+                            class="w-16 h-16 rounded-full border-2 border-green-500/30 overflow-hidden bg-gray-900 flex-shrink-0">
+                            <img id="pfpPreviewThumb" src="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-2 text-green-400 mb-1">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-[10px] font-black uppercase tracking-widest">PFP Uploaded</span>
+                            </div>
+                            <p class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">Click to change</p>
+                        </div>
                     </div>
                     <input id="pfpInput" type="file" class="hidden" accept="image/*" />
                 </label>

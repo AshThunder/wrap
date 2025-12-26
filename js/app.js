@@ -204,10 +204,26 @@ function setupEventListeners() {
             const reader = new FileReader();
             reader.onload = (event) => {
                 state.pfp = event.target.result;
+
+                // Update Card Previews
                 const p1 = document.getElementById('card-pfp');
                 const p2 = document.getElementById('cap-card-pfp');
                 if (p1) p1.src = state.pfp;
                 if (p2) p2.src = state.pfp;
+
+                // Update Upload UI Success State
+                const pfpPrompt = document.getElementById('pfpPrompt');
+                const pfpSuccess = document.getElementById('pfpSuccess');
+                const pfpPreviewThumb = document.getElementById('pfpPreviewThumb');
+
+                if (pfpPrompt && pfpSuccess && pfpPreviewThumb) {
+                    pfpPreviewThumb.src = state.pfp;
+                    pfpPrompt.classList.add('hidden');
+                    pfpSuccess.classList.remove('hidden');
+                    setTimeout(() => {
+                        pfpSuccess.classList.remove('opacity-0');
+                    }, 10);
+                }
             };
             reader.readAsDataURL(file);
         }
